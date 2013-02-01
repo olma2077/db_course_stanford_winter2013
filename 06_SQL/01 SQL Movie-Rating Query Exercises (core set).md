@@ -1,13 +1,13 @@
 # SQL Movie-Rating Query Exercises (core set)
 
-Movie ( mID, title, year, director )
-English: There is a movie with ID number mID, a title, a release year, and a director.
-
-Reviewer ( rID, name )
-English: The reviewer with ID number rID has a certain name.
-
-Rating ( rID, mID, stars, ratingDate )
-English: The reviewer rID gave the movie mIDa number of stars rating (1-5) on a certain ratingDate.
+    Movie ( mID, title, year, director )
+    English: There is a movie with ID number mID, a title, a release year, and a director.
+    
+    Reviewer ( rID, name )
+    English: The reviewer with ID number rID has a certain name.
+    
+    Rating ( rID, mID, stars, ratingDate )
+    English: The reviewer rID gave the movie mIDa number of stars rating (1-5) on a certain ratingDate.
 
 1. Find the titles of all movies directed by Steven Spielberg.
 
@@ -56,8 +56,8 @@ order by name, title, stars
 select distinct name, title
 from movie join reviewer join rating using (mid, rid)
 where rid in (select rid
-                    from rating r1 join rating r2 using (rid, mid)
-                    where r1.ratingdate < r2.ratingdate and r1.stars < r2.stars)
+              from rating r1 join rating r2 using (rid, mid)
+              where r1.ratingdate < r2.ratingdate and r1.stars < r2.stars)
 ```
 
 7. For each movie that has at least one rating, find the highest number of stars that movie received. Return the movie title and number of stars. Sort by movie title. 
